@@ -20,7 +20,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     ImageView img;
-    Bitmap bitmap;
+    //Bitmap bitmap;
 
 
     @Override
@@ -54,7 +54,8 @@ public class MainActivity extends AppCompatActivity {
         protected void onPostExecute(List<Product> data) {
             for ( int i =0; i<data.size();i++) {
                 Product x = data.get(i);
-                System.out.println(x.getName()+"/n"+x.getImgUrl());
+                img.setImageBitmap(x.getImg());
+
             }
         }
     }

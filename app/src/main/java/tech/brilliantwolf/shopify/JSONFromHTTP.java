@@ -121,10 +121,7 @@ public class JSONFromHTTP {
             } catch (JSONException e) {
                 System.out.println("The Extract products from json met JSONException dude");
                 e.printStackTrace();
-
             }
-
-
             return products;
         }
 
