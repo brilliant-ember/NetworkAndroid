@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import java.io.IOException;
@@ -20,6 +21,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     ImageView img;
+    ListView root;
     //Bitmap bitmap;
 
 
@@ -29,9 +31,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        TextView name = findViewById(R.id.textView);
-        TextView description = findViewById(R.id.textView2);
-        img = findViewById(R.id.imageView2);
+        root = findViewById(R.id.root);
 
 //        String url = "https://cdn.shopify.com/s/files/1/1000/7970/products/Aerodynamic_20Concrete_20Clock.png?v=1443055734";
 //        new GetImageFromURL(img).execute(url);
@@ -52,11 +52,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         protected void onPostExecute(List<Product> data) {
-            for ( int i =0; i<data.size();i++) {
-                Product x = data.get(i);
-                img.setImageBitmap(x.getImg());
-
-            }
+           root.setAdapter(new ProductsAdapter(MainActivity.this ,data));
         }
     }
 
