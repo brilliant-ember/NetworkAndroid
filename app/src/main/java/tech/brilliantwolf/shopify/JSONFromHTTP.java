@@ -1,5 +1,7 @@
 package tech.brilliantwolf.shopify;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.util.Log;
 
 import org.json.JSONArray;
@@ -113,7 +115,7 @@ public class JSONFromHTTP {
                     JSONArray imagesTag = currentProduct.getJSONArray("images");
                     String photoUrl = imagesTag.getJSONObject(0).getString("src");
 
-                    Product newProduct = new Product(title,type,photoUrl);
+                    Product newProduct = new Product(title,type,getImageFromUrl(photoUrl));
                     products.add(newProduct);
                 }
             } catch (JSONException e) {
@@ -127,5 +129,20 @@ public class JSONFromHTTP {
         }
 
     return null;
+    }
+
+    private static Bitmap getImageFromUrl(String url){
+        Bitmap bitmap = null;
+        try{
+            InputStream in = new URL(url).openStream();
+            bitmap = BitmapFactory.decodeStream(in);
+
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return bitmap;
     }
 }

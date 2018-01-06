@@ -1,5 +1,7 @@
 package tech.brilliantwolf.shopify;
 
+import android.graphics.Bitmap;
+
 /**
  * Created by Mohammed Al on 1/4/2018.
  */
@@ -7,16 +9,16 @@ package tech.brilliantwolf.shopify;
 public class Product {
     String mName;
     String mType;
-    String mImgUrl;
-    public  Product(String name, String type, String imgUrl ){
-        mImgUrl = imgUrl;
+    Bitmap mImg;
+    public  Product(String name, String type, Bitmap img ){
+        mImg = img;
         mName = name;
         mType = type;
 
     }
 
-    public String getImgUrl() {
-        return mImgUrl;
+    public Bitmap getImg() {
+        return mImg;
     }
 
     public String getName() {
