@@ -138,8 +138,10 @@ public class JSONFromHTTP {
             bitmap = BitmapFactory.decodeStream(in);
 
         } catch (MalformedURLException e) {
+            System.out.println("Error at the url while getting img from url")
             e.printStackTrace();
         } catch (IOException e) {
+            System.out.println("IO execption during getting input to make the bitmap from url");
             e.printStackTrace();
         }
 
