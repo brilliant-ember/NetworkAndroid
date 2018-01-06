@@ -26,4 +26,5 @@ public class Product {
     public String getType() {
         return mType;
     }
+
 }

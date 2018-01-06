@@ -84,7 +84,7 @@ public class JSONFromHTTP {
         return jsonResponse;
     }
 
-    private static List<Product> productsFromUrl(String requestUrl){
+    protected static List<Product> productsFromUrl(String requestUrl){
         URL url = createUrl(requestUrl);
 
         String jsonResponse = null;
