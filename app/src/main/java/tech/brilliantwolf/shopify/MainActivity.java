@@ -10,6 +10,8 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -68,6 +70,20 @@ public class MainActivity extends AppCompatActivity {
 
                }
            });
+
+
+           root.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+               @Override
+               public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                   Product p = data.get(position);
+                   MyDialoge myDialoge = new MyDialoge();
+                   myDialoge.takeProductFeatures(p.getName(),p.getType(),p.getImg());
+                   myDialoge.show(getFragmentManager(),"Screen");
+
+
+               }
+           });
+
         }
     }
 
