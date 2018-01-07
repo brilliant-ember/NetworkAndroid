@@ -1,11 +1,7 @@
 package tech.brilliantwolf.shopify;
 
-import android.app.SearchManager;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.BitmapRegionDecoder;
-import android.graphics.drawable.Drawable;
-import android.media.Image;
+
+
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -17,13 +13,7 @@ import android.view.MenuInflater;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.SearchView;
-import android.widget.TextView;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -57,14 +47,15 @@ public class MainActivity extends AppCompatActivity {
             return result;
         }
 
-        protected void onPostExecute(List<Product> data) {
+        protected void onPostExecute(final List<Product> data) {
             root.setTextFilterEnabled(true);
             adapter = new ProductsAdapter(MainActivity.this ,data);
            root.setAdapter( adapter);
            editText.addTextChangedListener(new TextWatcher() {
                @Override
                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                   MainActivity.this.adapter.getFilter().filter(s);
+                   adapter.getFilter().filter(s);
+
                }
 
                @Override
